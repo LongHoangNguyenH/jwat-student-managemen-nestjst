@@ -10,3 +10,9 @@ Additional Requirements:
           + Admin có thể làm mọi thao tác trên application.
           + Principal có thể xem danh sách học sinh, CRUD trên Lớp học nhưng không thể tạo hoặc chỉnh sửa thông tin học sinh
           + Teacher có full quyền trên việc chỉnh sửa học sinh nhưng chỉ có thể xem và query danh sách lớp học
+
+## Thêm vào
++ hạn chế để thông tin trên url
++ xử lý validation đầy đủ
++ gọi class nhớ kiểm soát scope và thêm các getter, setter
++ để các message vào 1 file constants riêng
