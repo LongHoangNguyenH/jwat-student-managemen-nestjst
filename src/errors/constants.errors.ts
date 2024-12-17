@@ -7,6 +7,7 @@ const CLASS_NOT_FOUND = 'Class not found';
 const CLASS_EXISTS = 'Class already exists';
 const CLASS_EXISTS_STUDENT = 'There are students in this class';
 const CLASS_NAME_REQUIRED = 'Class name is required';
+const CLASS_ID_REQUIRED = 'Class ID is required';
 
 export {
   STUDENT_NOT_FOUND,
@@ -17,4 +18,5 @@ export {
   CLASS_EXISTS,
   CLASS_EXISTS_STUDENT,
   CLASS_NAME_REQUIRED,
+  CLASS_ID_REQUIRED,
 };

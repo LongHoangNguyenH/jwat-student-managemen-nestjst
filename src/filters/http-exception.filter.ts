@@ -12,6 +12,7 @@ export class HttpExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
+      message: exception.message,
     });
   }
 }
