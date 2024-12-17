@@ -6,5 +6,5 @@
     "semi": true,
     "arrowParens": "avoid",
     "proseWrap": "never",
-    "endOfLine": "lf"
+    "endOfLine": "auto"
 }
