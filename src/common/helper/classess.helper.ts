@@ -27,6 +27,11 @@ const FindIndexStudentById = (studentId: number): number => {
   return listStudents.findIndex(student => student.getStudentId() == studentId);
 };
 
+const DeleteStudentById = (studentId: number): StudentEntity[] => {
+  const index = FindIndexStudentById(studentId);
+  return listStudents.splice(index, 1);
+};
+
 export {
   FindIndexStudentById,
   ContainsSpecificSpecialChars,
@@ -34,4 +39,5 @@ export {
   findClassById,
   FindStudentById,
   FindStudentByName,
+  DeleteStudentById,
 };

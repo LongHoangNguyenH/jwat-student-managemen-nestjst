@@ -1,4 +1,4 @@
-import { Body, Controller, Get, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 import { CreateStudentDto } from './dto/create-student.dto';
@@ -6,6 +6,7 @@ import { CreateStudentPipe } from 'src/common/pipes/create-student/create-studen
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { UpdateStudentPipe } from 'src/common/pipes/update-student/update-student.pipe';
 import { StudentEntity } from './entities/student.entity';
+import { QueryStudentPipe } from 'src/common/pipes/query-student/query-student.pipe';
 
 @Controller('students')
 @UseFilters(HttpExceptionFilter)
@@ -22,8 +23,13 @@ export class StudentsController {
     return this.studentsService.update(updateStudentDto);
   }
 
-  @Get()
-  getStudentById(@Body('studentId', ParseIntPipe) studentId: number): StudentEntity {
+  @Delete('/:studentId')
+  delete(@Param('studentId', ParseIntPipe, QueryStudentPipe) studentId: number): StudentEntity[] {
+    return this.studentsService.delete(studentId);
+  }
+
+  @Get('/:studentId')
+  getStudentById(@Param('studentId', ParseIntPipe, QueryStudentPipe) studentId: number): StudentEntity {
     return this.studentsService.getStudentById(studentId);
   }
 }
