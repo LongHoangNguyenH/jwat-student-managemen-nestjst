@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable, PipeTransform } from '@nestjs/common';
 import { CLASS_NOT_FOUND } from 'src/common/errors/constants.errors';
-import { FindClassbyName } from 'src/common/helper/classess.helper';
+import { FindClassbyName } from 'src/common/helper/helper.helper';
 
 @Injectable()
 export class QueryClassPipe implements PipeTransform {

@@ -4,6 +4,7 @@ import { CreateClassDto } from './dto/create-class.dto';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 import { ClassPipe } from 'src/common/pipes/class-pipe/class-pipe.pipe';
 import { QueryClassPipe } from 'src/common/pipes/query-class/query-class.pipe';
+import { QueryClassDto } from './dto/query-class.dto';
 
 @Controller('classes')
 @UseFilters(HttpExceptionFilter)
@@ -15,8 +16,8 @@ export class ClassesController {
     return this.classesService.create(createClassDto);
   }
 
-  @Get(':classId')
-  findOne(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number) {
-    return this.classesService.findOne(classId);
+  @Get('/:classId')
+  findOne(@Param('classId', ParseIntPipe, QueryClassPipe) queryClassDto: QueryClassDto) {
+    return this.classesService.findOne(queryClassDto);
   }
 }

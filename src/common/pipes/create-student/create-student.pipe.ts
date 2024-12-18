@@ -1,6 +1,6 @@
 import { ArgumentMetadata, HttpException, HttpStatus, Injectable, PipeTransform } from '@nestjs/common';
 import { CLASS_NOT_FOUND, STUDENT_EXISTS } from 'src/common/errors/constants.errors';
-import { FindClassbyName, FindStudentByName } from 'src/common/helper/classess.helper';
+import { FindClassbyName, FindStudentByName } from 'src/common/helper/helper.helper';
 
 @Injectable()
 export class CreateStudentPipe implements PipeTransform {
