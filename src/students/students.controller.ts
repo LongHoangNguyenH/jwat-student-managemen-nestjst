@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Put, UseFilters } from '@nestjs/common';
+import { Body, Controller, Get, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 import { CreateStudentDto } from './dto/create-student.dto';
@@ -20,5 +20,10 @@ export class StudentsController {
   @Put()
   update(@Body(UpdateStudentPipe) updateStudentDto: UpdateStudentDto): StudentEntity {
     return this.studentsService.update(updateStudentDto);
+  }
+
+  @Get()
+  getStudentById(@Body('studentId', ParseIntPipe) studentId: number): StudentEntity {
+    return this.studentsService.getStudentById(studentId);
   }
 }

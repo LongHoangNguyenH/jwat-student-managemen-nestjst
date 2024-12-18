@@ -3,7 +3,7 @@ import { CreateStudentDto } from './dto/create-student.dto';
 import { StudentEntity } from './entities/student.entity';
 import { listStudents } from 'src/data/data';
 import { UpdateStudentDto } from './dto/update-student.dto';
-import { FindIndexStudentById } from 'src/common/helper/classess.helper';
+import { FindIndexStudentById, FindStudentById } from 'src/common/helper/classess.helper';
 
 @Injectable()
 export class StudentsService {
@@ -24,5 +24,9 @@ export class StudentsService {
     listStudents[index].setClassName(updateStudentDto.className);
     listStudents[index].setStudentName(updateStudentDto.studentName);
     return listStudents[index];
+  }
+
+  getStudentById(studentId: number): StudentEntity {
+    return FindStudentById(studentId);
   }
 }
