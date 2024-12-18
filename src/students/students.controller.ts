@@ -38,4 +38,9 @@ export class StudentsController {
   getStudentByClassname(@Param('className', QueryClassPipe) className: string): StudentEntity[] {
     return this.studentsService.getStudentByClassname(className);
   }
+
+  @Get('/byName/:studentName')
+  getStudentByName(@Param('studentName') studentName: string): StudentEntity[] {
+    return this.studentsService.getStudentByName(studentName);
+  }
 }

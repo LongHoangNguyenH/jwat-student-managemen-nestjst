@@ -5,10 +5,11 @@ import { listStudents } from 'src/data/data';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import {
   DeleteStudentById,
+  Find_LIKE_StudentsByName,
   FindIndexStudentById,
   FindStudentById,
   FindStudentsByClassname,
-} from 'src/common/helper/classess.helper';
+} from 'src/common/helper/helper.helper';
 
 @Injectable()
 export class StudentsService {
@@ -42,5 +43,9 @@ export class StudentsService {
 
   getStudentByClassname(classname: string): StudentEntity[] {
     return FindStudentsByClassname(classname);
+  }
+
+  getStudentByName(studentName: string): StudentEntity[] {
+    return Find_LIKE_StudentsByName(studentName);
   }
 }
