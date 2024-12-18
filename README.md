@@ -16,3 +16,5 @@ Additional Requirements:
 + xử lý validation đầy đủ
 + gọi class nhớ kiểm soát scope và thêm các getter, setter
 + để các message vào 1 file constants riêng
+
+request -> middleware -> guard -> pipe -> interceptor -> handler

@@ -1,34 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, ParseIntPipe, Post, UseFilters } from '@nestjs/common';
 import { ClassesService } from './classes.service';
 import { CreateClassDto } from './dto/create-class.dto';
-import { UpdateClassDto } from './dto/update-class.dto';
+import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
+import { ClassNamePipe } from 'src/common/pipes/class-name/class-name.pipe';
 
 @Controller('classes')
+@UseFilters(HttpExceptionFilter)
 export class ClassesController {
   constructor(private readonly classesService: ClassesService) {}
 
   @Post()
-  create(@Body() createClassDto: CreateClassDto) {
+  create(@Body(ClassNamePipe) createClassDto: CreateClassDto) {
     return this.classesService.create(createClassDto);
   }
 
   @Get()
-  findAll() {
-    return this.classesService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.classesService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClassDto: UpdateClassDto) {
-    return this.classesService.update(+id, updateClassDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.classesService.remove(+id);
+  findOne(@Body(ClassNamePipe, ParseIntPipe) classId: number) {
+    return this.classesService.findOne(classId);
   }
 }
