@@ -7,6 +7,7 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { UpdateStudentPipe } from 'src/common/pipes/update-student/update-student.pipe';
 import { StudentEntity } from './entities/student.entity';
 import { QueryStudentPipe } from 'src/common/pipes/query-student/query-student.pipe';
+import { QueryClassPipe } from 'src/common/pipes/query-class/query-class.pipe';
 
 @Controller('students')
 @UseFilters(HttpExceptionFilter)
@@ -31,5 +32,10 @@ export class StudentsController {
   @Get('/:studentId')
   getStudentById(@Param('studentId', ParseIntPipe, QueryStudentPipe) studentId: number): StudentEntity {
     return this.studentsService.getStudentById(studentId);
+  }
+
+  @Get('/byClassname/:className')
+  getStudentByClassname(@Param('className', QueryClassPipe) className: string): StudentEntity[] {
+    return this.studentsService.getStudentByClassname(className);
   }
 }
