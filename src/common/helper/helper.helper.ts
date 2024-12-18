@@ -36,6 +36,10 @@ const FindStudentsByClassname = (className: string): StudentEntity[] => {
   return listStudents.filter(student => student.getClassName() == className);
 };
 
+const Find_LIKE_StudentsByName = (studentName: string): StudentEntity[] => {
+  return listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
+};
+
 export {
   FindIndexStudentById,
   ContainsSpecificSpecialChars,
@@ -45,4 +49,5 @@ export {
   FindStudentByName,
   DeleteStudentById,
   FindStudentsByClassname,
+  Find_LIKE_StudentsByName,
 };
