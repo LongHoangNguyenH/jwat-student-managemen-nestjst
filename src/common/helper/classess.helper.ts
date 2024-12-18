@@ -1,5 +1,6 @@
 import { ClassEntity } from 'src/classes/entities/class.entity';
-import { listClasses } from 'src/data/data';
+import { listClasses, listStudents } from 'src/data/data';
+import { StudentEntity } from 'src/students/entities/student.entity';
 
 const findClassById = (classId: number): ClassEntity => {
   const foundclass = listClasses.find(cls => cls.getClassId == classId);
@@ -15,4 +16,12 @@ const FindClassbyName = (className: string): ClassEntity => {
   return listClasses.find(cls => cls.getClassName == className);
 };
 
-export { ContainsSpecificSpecialChars, FindClassbyName, findClassById };
+const FindStudentById = (studentId: number): StudentEntity => {
+  return listStudents.find(student => student.getStudentId() == studentId);
+};
+
+const FindStudentByName = (studentName: string): StudentEntity => {
+  return listStudents.find(student => student.getStudentName() == studentName);
+};
+
+export { ContainsSpecificSpecialChars, FindClassbyName, findClassById, FindStudentById, FindStudentByName };
