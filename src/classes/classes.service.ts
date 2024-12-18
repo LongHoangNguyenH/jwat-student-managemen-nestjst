@@ -15,7 +15,6 @@ export class ClassesService {
   }
 
   findOne(classId: number): ClassEntity {
-    console.log('classservice: ', classId);
     return listClasses.find(cls => cls.getClassId == classId);
   }
 }

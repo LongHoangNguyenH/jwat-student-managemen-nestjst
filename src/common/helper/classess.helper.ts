@@ -3,8 +3,7 @@ import { listClasses, listStudents } from 'src/data/data';
 import { StudentEntity } from 'src/students/entities/student.entity';
 
 const findClassById = (classId: number): ClassEntity => {
-  const foundclass = listClasses.find(cls => cls.getClassId == classId);
-  return foundclass;
+  return listClasses.find(cls => cls.getClassId == classId);
 };
 
 const ContainsSpecificSpecialChars = (str: string): boolean => {
