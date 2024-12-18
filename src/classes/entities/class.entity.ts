@@ -1,17 +1,17 @@
 export class ClassEntity {
-  private classId: string;
+  private classId: number;
   public className: string;
 
-  constructor(classId: string, className: string) {
+  constructor(classId: number, className: string) {
     this.classId = classId;
     this.className = className;
   }
 
-  public set setClassId(classId: string) {
+  public set setClassId(classId: number) {
     this.classId = classId;
   }
 
-  public get getClassId(): string {
+  public get getClassId(): number {
     return this.classId;
   }
 
