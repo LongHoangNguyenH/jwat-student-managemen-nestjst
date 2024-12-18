@@ -24,4 +24,15 @@ const FindStudentByName = (studentName: string): StudentEntity => {
   return listStudents.find(student => student.getStudentName() == studentName);
 };
 
-export { ContainsSpecificSpecialChars, FindClassbyName, findClassById, FindStudentById, FindStudentByName };
+const FindIndexStudentById = (studentId: number): number => {
+  return listStudents.findIndex(student => student.getStudentId() == studentId);
+};
+
+export {
+  FindIndexStudentById,
+  ContainsSpecificSpecialChars,
+  FindClassbyName,
+  findClassById,
+  FindStudentById,
+  FindStudentByName,
+};
