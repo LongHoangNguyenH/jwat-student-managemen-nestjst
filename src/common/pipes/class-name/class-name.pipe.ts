@@ -1,11 +1,12 @@
 import { PipeTransform, Injectable, ArgumentMetadata, HttpException, HttpStatus } from '@nestjs/common';
-import { CLASS_EXISTS, CLASS_NAME_REQUIRED, CLASS_NAME_UNVALID } from '../errors/constants.errors';
-import { ContainsSpecificSpecialChars, FindClassbyName } from '../helper/classess.helper';
+import { CLASS_EXISTS, CLASS_NAME_REQUIRED, CLASS_NAME_UNVALID } from 'src/common/errors/constants.errors';
+import { ContainsSpecificSpecialChars, FindClassbyName } from 'src/common/helper/classess.helper';
 
 @Injectable()
-export class ClassesPipe implements PipeTransform<{ className: string }> {
+export class ClassNamePipe implements PipeTransform<{ className: string }> {
   transform(value: { className: string }, metadata: ArgumentMetadata) {
     console.log(metadata);
+    console.log(value);
     if (!value.className) {
       throw new HttpException(CLASS_NAME_REQUIRED, HttpStatus.BAD_REQUEST);
     } else {

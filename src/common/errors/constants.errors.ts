@@ -9,6 +9,7 @@ const CLASS_EXISTS_STUDENT = 'There are students in this class';
 const CLASS_NAME_REQUIRED = 'Class name is required';
 const CLASS_ID_REQUIRED = 'Class ID is required';
 const CLASS_NAME_UNVALID = 'Class name is unvalid';
+const CLASS_ID_UNVALID = 'Class ID is unvalid';
 
 const INTERNAL_SERVER_ERROR = 'Internal server error';
 
@@ -24,4 +25,5 @@ export {
   CLASS_ID_REQUIRED,
   CLASS_NAME_UNVALID,
   INTERNAL_SERVER_ERROR,
+  CLASS_ID_UNVALID,
 };

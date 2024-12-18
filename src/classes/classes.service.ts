@@ -2,18 +2,20 @@ import { Injectable } from '@nestjs/common';
 import { CreateClassDto } from './dto/create-class.dto';
 import { ClassEntity } from './entities/class.entity';
 import { listClasses } from '../data/data';
-import { v4 as uuid } from 'uuid';
-import { BadRequestException } from '@nestjs/common';
-import { CLASS_EXISTS } from 'src/common/errors/constants.errors';
+// import { findClassById } from 'src/common/helper/classess.helper';
 @Injectable()
 export class ClassesService {
-  create(createClassDto: CreateClassDto): ClassEntity {
-    const existingClass = listClasses.find(cls => createClassDto.className == cls.getClassName);
-    if (existingClass) {
-      throw new BadRequestException(CLASS_EXISTS);
-    }
-    const newClass = new ClassEntity(uuid(), createClassDto.className);
-    listClasses.push(newClass);
-    return newClass;
+  private classId: number = 0;
+
+  create(newClass: CreateClassDto): ClassEntity {
+    const newClassEntity = new ClassEntity(this.classId, newClass.className);
+    this.classId++;
+    listClasses.push(newClassEntity);
+    return newClassEntity;
+  }
+
+  findOne(classId: number): ClassEntity {
+    console.log('classservice: ', classId);
+    return listClasses.find(cls => cls.getClassId == classId);
   }
 }
