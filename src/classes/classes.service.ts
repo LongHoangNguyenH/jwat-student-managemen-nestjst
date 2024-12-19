@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateClassDto } from './dto/create-class.dto';
 import { ClassEntity } from './entities/class.entity';
 import { listClasses } from '../data/data';
-import { findClassById, updateClassbyId } from 'src/common/helper/helper.helper';
+import { DeleteClassById, findClassById, updateClassbyId } from 'src/common/helper/helper.helper';
 @Injectable()
 export class ClassesService {
   private classId: number = 0;
@@ -20,5 +20,9 @@ export class ClassesService {
 
   update(classId: number, className: string) {
     return updateClassbyId(classId, className);
+  }
+
+  delete(classId: number) {
+    return DeleteClassById(classId);
   }
 }

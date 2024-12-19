@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
 import { ClassesService } from './classes.service';
 import { CreateClassDto } from './dto/create-class.dto';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 import { ClassPipe } from 'src/common/pipes/class-pipe/class-pipe.pipe';
 import { QueryClassPipe } from 'src/common/pipes/query-class/query-class.pipe';
+import { CheckStudentInClassPipe } from 'src/common/pipes/check-student-in-class/check-student-in-class.pipe';
 
 @Controller('classes')
 @UseFilters(HttpExceptionFilter)
@@ -23,5 +24,10 @@ export class ClassesController {
   @Put('/:classId')
   update(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number, @Body() className: string) {
     return this.classesService.update(classId, className);
+  }
+
+  @Delete('/:classId')
+  delete(@Param('classId', ParseIntPipe, CheckStudentInClassPipe) classId: number) {
+    return this.classesService.delete(classId);
   }
 }

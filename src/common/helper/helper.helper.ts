@@ -1,4 +1,3 @@
-import { response } from 'express';
 import { ClassEntity } from 'src/classes/entities/class.entity';
 import { listClasses, listStudents } from 'src/data/data';
 import { StudentEntity } from 'src/students/entities/student.entity';
@@ -38,13 +37,7 @@ const FindStudentsByClassname = (className: string): StudentEntity[] => {
 };
 
 const Find_LIKE_StudentsByName = (studentName: string): StudentEntity[] => {
-  const searLike = listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
-  if (searLike.length == 0) {
-    response.status(200).json({ message: 'No student found with this name' });
-    return;
-  } else {
-    return searLike;
-  }
+  return listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
 };
 
 const updateClassbyId = (classId: number, className: string): ClassEntity => {
@@ -61,6 +54,12 @@ const updateClassbyId = (classId: number, className: string): ClassEntity => {
   return listClasses[index];
 };
 
+const DeleteClassById = (classId: number): ClassEntity[] => {
+  const index = listClasses.findIndex(cls => cls.getClassId == classId);
+  listClasses.splice(index, 1);
+  return listClasses.splice(index, 1);
+};
+
 export {
   FindIndexStudentById,
   ContainsSpecificSpecialChars,
@@ -72,4 +71,5 @@ export {
   FindStudentsByClassname,
   Find_LIKE_StudentsByName,
   updateClassbyId,
+  DeleteClassById,
 };
