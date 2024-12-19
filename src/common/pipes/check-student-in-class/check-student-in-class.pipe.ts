@@ -11,7 +11,7 @@ export class CheckStudentInClassPipe implements PipeTransform {
       throw new HttpException(CLASS_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
     const className = listClasses[index].getClassName;
-    const IsStudentInClass = listStudents.some(student => student.getClassName() == className);
+    const IsStudentInClass = listStudents.some(student => student.getClassName() == className.toLowerCase());
     if (IsStudentInClass) throw new HttpException(CLASS_EXISTS_STUDENT, HttpStatus.BAD_REQUEST);
     return value;
   }

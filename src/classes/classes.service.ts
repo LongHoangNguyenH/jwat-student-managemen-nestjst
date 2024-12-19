@@ -20,7 +20,7 @@ export class ClassesService {
   }
 
   update(classId: number, updateClassDto: UpdateClassDto) {
-    return updateClassbyId(classId, updateClassDto.className);
+    return updateClassbyId(classId, updateClassDto.className.toLowerCase());
   }
 
   delete(classId: number) {

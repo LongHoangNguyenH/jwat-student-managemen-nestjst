@@ -50,7 +50,7 @@ const updateClassbyId = (classId: number, className: string): ClassEntity => {
       }
     });
   }
-  listClasses[index].setClassName(className.toLowerCase());
+  listClasses[index].setClassName(className);
   return listClasses[index];
 };
 
