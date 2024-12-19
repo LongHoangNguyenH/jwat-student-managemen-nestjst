@@ -29,8 +29,9 @@ export class StudentsService {
   update(updateStudentDto: UpdateStudentDto): StudentEntity {
     const index = FindIndexStudentById(updateStudentDto.studentId);
     const currentStudent = listStudents[index];
-    if (updateStudentDto.studentName === '') updateStudentDto.studentName = currentStudent.getStudentName();
-    if (updateStudentDto.className === '') updateStudentDto.className = currentStudent.getClassName();
+    console.log('current: ', currentStudent);
+    if (updateStudentDto.studentName == '') updateStudentDto.studentName = currentStudent.getStudentName();
+    if (updateStudentDto.className == '') updateStudentDto.className = currentStudent.getClassName();
     listStudents[index].setClassName(updateStudentDto.className);
     listStudents[index].setStudentName(updateStudentDto.studentName);
     return listStudents[index];
@@ -41,7 +42,6 @@ export class StudentsService {
   }
 
   getStudentById(studentId: number): StudentEntity {
-    console.log(listStudents);
     return FindStudentById(studentId);
   }
 
