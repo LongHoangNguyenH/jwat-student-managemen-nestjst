@@ -15,7 +15,11 @@ import {
 export class StudentsService {
   private studentId: number = 0;
   create(createStudentDto: CreateStudentDto) {
-    const newStudent = new StudentEntity(this.studentId, createStudentDto.studentName, createStudentDto.className);
+    const newStudent = new StudentEntity(
+      this.studentId,
+      createStudentDto.studentName.toLowerCase(),
+      createStudentDto.className.toLowerCase(),
+    );
     listStudents.push(newStudent);
     this.studentId++;
     console.log(listStudents);

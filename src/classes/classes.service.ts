@@ -8,7 +8,7 @@ export class ClassesService {
   private classId: number = 0;
 
   create(newClass: CreateClassDto): ClassEntity {
-    const newClassEntity = new ClassEntity(this.classId, newClass.className);
+    const newClassEntity = new ClassEntity(this.classId, newClass.className.toLowerCase());
     this.classId++;
     listClasses.push(newClassEntity);
     return newClassEntity;
