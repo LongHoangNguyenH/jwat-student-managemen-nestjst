@@ -5,6 +5,7 @@ import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 import { ClassPipe } from 'src/common/pipes/class-pipe/class-pipe.pipe';
 import { QueryClassPipe } from 'src/common/pipes/query-class/query-class.pipe';
 import { CheckStudentInClassPipe } from 'src/common/pipes/check-student-in-class/check-student-in-class.pipe';
+import { UpdateClassDto } from './dto/update-class.dto';
 
 @Controller('classes')
 @UseFilters(HttpExceptionFilter)
@@ -22,8 +23,8 @@ export class ClassesController {
   }
 
   @Put('/:classId')
-  update(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number, @Body() className: string) {
-    return this.classesService.update(classId, className);
+  update(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number, @Body() updateClassDto: UpdateClassDto) {
+    return this.classesService.update(classId, updateClassDto);
   }
 
   @Delete('/:classId')

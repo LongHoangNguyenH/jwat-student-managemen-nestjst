@@ -3,6 +3,7 @@ import { CreateClassDto } from './dto/create-class.dto';
 import { ClassEntity } from './entities/class.entity';
 import { listClasses } from '../data/data';
 import { DeleteClassById, findClassById, updateClassbyId } from 'src/common/helper/helper.helper';
+import { UpdateClassDto } from './dto/update-class.dto';
 @Injectable()
 export class ClassesService {
   private classId: number = 0;
@@ -18,8 +19,8 @@ export class ClassesService {
     return findClassById(classId);
   }
 
-  update(classId: number, className: string) {
-    return updateClassbyId(classId, className);
+  update(classId: number, updateClassDto: UpdateClassDto) {
+    return updateClassbyId(classId, updateClassDto.className);
   }
 
   delete(classId: number) {
