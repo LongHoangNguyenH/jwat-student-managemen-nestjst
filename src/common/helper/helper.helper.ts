@@ -37,7 +37,7 @@ const FindStudentsByClassname = (className: string): StudentEntity[] => {
 };
 
 const Find_LIKE_StudentsByName = (studentName: string): StudentEntity[] => {
-  return listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
+  return listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName.toLowerCase()));
 };
 
 const updateClassbyId = (classId: number, className: string): ClassEntity => {
@@ -49,14 +49,13 @@ const updateClassbyId = (classId: number, className: string): ClassEntity => {
         student.setClassName(className);
       }
     });
-    listClasses[index].setClassName(className);
   }
+  listClasses[index].setClassName(className);
   return listClasses[index];
 };
 
 const DeleteClassById = (classId: number): ClassEntity[] => {
   const index = listClasses.findIndex(cls => cls.getClassId == classId);
-  listClasses.splice(index, 1);
   return listClasses.splice(index, 1);
 };
 

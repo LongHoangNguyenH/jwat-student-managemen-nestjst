@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import {
   CLASS_NAME_REQUIRED,
   CLASS_NAME_UNVALID,
@@ -7,7 +7,6 @@ import {
 } from 'src/common/errors/constants.errors';
 
 export class CreateStudentDto {
-  @MinLength(3)
   @MaxLength(30)
   @IsString({ message: STUDENT_NAME_INVALID })
   @IsNotEmpty({ message: STUDENT_NAME_REQUIRED })
