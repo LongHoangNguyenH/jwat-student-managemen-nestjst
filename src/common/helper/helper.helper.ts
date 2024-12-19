@@ -1,3 +1,4 @@
+import { response } from 'express';
 import { ClassEntity } from 'src/classes/entities/class.entity';
 import { listClasses, listStudents } from 'src/data/data';
 import { StudentEntity } from 'src/students/entities/student.entity';
@@ -37,7 +38,13 @@ const FindStudentsByClassname = (className: string): StudentEntity[] => {
 };
 
 const Find_LIKE_StudentsByName = (studentName: string): StudentEntity[] => {
-  return listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
+  const searLike = listStudents.filter(student => student.getStudentName().toLowerCase().includes(studentName));
+  if (searLike.length == 0) {
+    response.status(200).json({ message: 'No student found with this name' });
+    return;
+  } else {
+    return searLike;
+  }
 };
 
 export {

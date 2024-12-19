@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateClassDto } from './dto/create-class.dto';
 import { ClassEntity } from './entities/class.entity';
 import { listClasses } from '../data/data';
-import { QueryClassDto } from './dto/query-class.dto';
 import { findClassById } from 'src/common/helper/helper.helper';
 // import { findClassById } from 'src/common/helper/classess.helper';
 @Injectable()
@@ -16,7 +15,7 @@ export class ClassesService {
     return newClassEntity;
   }
 
-  findOne(queryClassDto: QueryClassDto): ClassEntity {
-    return findClassById(queryClassDto.getId());
+  findOne(classId: number): ClassEntity {
+    return findClassById(classId);
   }
 }
