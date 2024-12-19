@@ -5,7 +5,6 @@ import { FindClassbyName, FindStudentByName } from 'src/common/helper/helper.hel
 @Injectable()
 export class CreateStudentPipe implements PipeTransform {
   transform(value: { studentName: string; className: string }) {
-    console.log(value, value.className);
     if (FindStudentByName(value.studentName.toLowerCase())) {
       throw new HttpException(STUDENT_EXISTS, HttpStatus.BAD_REQUEST);
     } else if (!FindClassbyName(value.className.toLocaleLowerCase())) {
