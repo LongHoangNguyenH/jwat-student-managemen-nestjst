@@ -47,6 +47,20 @@ const Find_LIKE_StudentsByName = (studentName: string): StudentEntity[] => {
   }
 };
 
+const updateClassbyId = (classId: number, className: string): ClassEntity => {
+  const index = listClasses.findIndex(cls => cls.getClassId == classId);
+  const currentName = listClasses[index].getClassName;
+  if (listStudents.length > 0) {
+    listStudents.forEach(student => {
+      if (student.className == currentName) {
+        student.setClassName(className);
+      }
+    });
+    listClasses[index].setClassName(className);
+  }
+  return listClasses[index];
+};
+
 export {
   FindIndexStudentById,
   ContainsSpecificSpecialChars,
@@ -57,4 +71,5 @@ export {
   DeleteStudentById,
   FindStudentsByClassname,
   Find_LIKE_StudentsByName,
+  updateClassbyId,
 };

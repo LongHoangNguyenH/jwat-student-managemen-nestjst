@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UseFilters } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, UseFilters } from '@nestjs/common';
 import { ClassesService } from './classes.service';
 import { CreateClassDto } from './dto/create-class.dto';
 import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
@@ -18,5 +18,10 @@ export class ClassesController {
   @Get('/:classId')
   findOne(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number) {
     return this.classesService.findOne(classId);
+  }
+
+  @Put('/:classId')
+  update(@Param('classId', ParseIntPipe, QueryClassPipe) classId: number, @Body() className: string) {
+    return this.classesService.update(classId, className);
   }
 }

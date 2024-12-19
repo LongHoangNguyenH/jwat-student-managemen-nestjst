@@ -19,7 +19,7 @@ export class ClassEntity {
     return this.className;
   }
 
-  public set setName(className: string) {
+  public setClassName(className: string) {
     this.className = className;
   }
 }
