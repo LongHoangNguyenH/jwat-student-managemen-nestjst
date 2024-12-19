@@ -29,7 +29,6 @@ export class StudentsService {
   update(updateStudentDto: UpdateStudentDto): StudentEntity {
     const index = FindIndexStudentById(updateStudentDto.studentId);
     const currentStudent = listStudents[index];
-    console.log('current: ', currentStudent);
     if (updateStudentDto.studentName == '') updateStudentDto.studentName = currentStudent.getStudentName();
     if (updateStudentDto.className == '') updateStudentDto.className = currentStudent.getClassName();
     listStudents[index].setClassName(updateStudentDto.className);
